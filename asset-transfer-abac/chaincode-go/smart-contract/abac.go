@@ -28,10 +28,12 @@ func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface,
 	// Demonstrate the use of Attribute-Based Access Control (ABAC) by checking
 	// to see if the caller has the "abac.creator" attribute with a value of true;
 	// if not, return an error.
-	//
-	err := ctx.GetClientIdentity().AssertAttributeValue("abac.creator", "true")
+	//policy evaluation
+	// checking if user has write permisdsion
+	err := ctx.GetClientIdentity().AssertAttributeValue("write", "true")
 	if err != nil {
-		return fmt.Errorf("submitting client not authorized to create asset, does not have abac.creator role")
+		//if unauthorised, we will throw an error
+		return fmt.Errorf("submitting client not authorized to create asset, does not have write permission")
 	}
 
 	exists, err := s.AssetExists(ctx, id)
@@ -39,6 +41,7 @@ func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface,
 		return err
 	}
 	if exists {
+		// checking if asset already exists
 		return fmt.Errorf("the asset %s already exists", id)
 	}
 
@@ -47,7 +50,7 @@ func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface,
 	if err != nil {
 		return err
 	}
-
+		// medical record structure
 	asset := Asset{
 		ID:             id,
 		Color:          color,
@@ -59,7 +62,7 @@ func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface,
 	if err != nil {
 		return err
 	}
-
+// push medical record to world state
 	return ctx.GetStub().PutState(id, assetJSON)
 }
 
