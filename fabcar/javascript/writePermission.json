@@ -1,6 +1,16 @@
-{
-    "name": "write",
-    "value": "true",
-    "ecert" : true
-    
-}
+[
+
+    {
+        "name": "role",
+        "value": "Stakeholder",
+        "ecert" : true
+        
+    },
+    {
+        "name": "organisation",
+        "value": "NASA",
+        "ecert" : true
+        
+    }
+
+]
