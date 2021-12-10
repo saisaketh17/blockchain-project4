@@ -40,7 +40,7 @@ async function main() {
         // Get the contract from the network.
         const contract = network.getContract('fabcar');
         
-        await contract.submitTransaction('CreateModel', 'Model4', 'approved','sateesh','Project1');
+        await contract.submitTransaction('CreateModel', 'Model11', 'approved','sateesh','Project1');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

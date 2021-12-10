@@ -1,0 +1,16 @@
+[
+
+    {
+        "name": "role",
+        "value": "Stakeholder",
+        "ecert" : true
+        
+    },
+    {
+        "name": "organisation",
+        "value": "XYZ",
+        "ecert" : true
+        
+    }
+
+]
